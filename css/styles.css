@@ -82,6 +82,8 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    /* required because of missing href attribute on the nav anchor */
+    cursor:pointer;
 }
 
 .navbar__menu .menu__link:hover {
