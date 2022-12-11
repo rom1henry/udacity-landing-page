@@ -8,6 +8,8 @@
  *
 */
 
+/* btn icon from icofont */
+@import url(./icofont/icofont.css);
 
 /* ---- Base Rules ---- */
 body {
@@ -60,7 +62,6 @@ section {
     min-height: 80vh;
 }
 
-
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
@@ -82,12 +83,13 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    white-space: nowrap;
     /* required because of missing href attribute on the nav anchor */
     cursor:pointer;
 }
 
 .navbar__menu .menu__link:hover {
-    background: #333;
+    background: rgba(0,13,60,1);
     color: #fff;
     transition: ease 0.3s all;
 }
@@ -99,6 +101,9 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+
+    /* Transition effect when sliding up and down */
+    transition: top 0.3s; 
 }
 
 /* Footer Styles */
@@ -120,7 +125,7 @@ section {
     text-align: left;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 40em){
     .landing__container {
         max-width: 50em;
         padding: 4em;
@@ -197,6 +202,38 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: ease 0.5s all;
 }
 
+/* Scroll-to-top button */
+
+.scroll-top {
+  position: relative;
+}
+
+.scroll-top_btn {
+  /* Position */
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+
+  /* Style */
+  background-color:rgba(136,203,171,1);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  filter: drop-shadow(0 0 0.3rem rgba(255, 255, 255, 0.4));
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-top_btn--hidden {
+  visibility: hidden;
+}
+
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
@@ -217,12 +254,12 @@ section.your-active-class .landing__container::after {
 }
 
 .navbar__menu .menu__link--active {
-  background: #333;
+  background: rgba(136,203,171,1);
   color: #fff;
   transition: ease 0.3s all;
 }
 
-/* Section Active Styles Keyframe Animations */
+/* Section Active and Button Styles Keyframe Animations */
 @keyframes rotate {
 	from {
 		transform: rotate(0deg)
