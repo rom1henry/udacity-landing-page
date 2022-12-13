@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollBtn = document.querySelector('.scroll-top_btn');
   let lastScrollPos = window.pageYOffset;
   let scrollTimer = null;
+  let isOnNav = Boolean;
 
   /**
  * End Global Variables
@@ -56,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       tempNav.appendChild(navItem);
     }
-
     nav.appendChild(tempNav);
   };
 
@@ -65,14 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const section of sections) {
       const box = section.getBoundingClientRect();
       if (box.top <= 150 && box.bottom >= 150) {
-        // Apply active state on the current section.
+        // Apply active state on the current section and the corresponding nav link.
         section.classList.add('your-active-class');
-        // Apply active state on the corresponding nav link.
         nav.querySelector(`[data-nav="#${section.id}"]`).classList.add('menu__link--active');
       } else {
-        // Remove active state from other sections
+        // Remove active state from other sections and other nav links
         section.classList.remove('your-active-class');
-        // Remove active state from other nav links
         nav.querySelector(`[data-nav="#${section.id}"]`).classList.remove('menu__link--active');
       }
     }
@@ -113,9 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (scrollTimer) {
       clearTimeout(scrollTimer);
     }
-    scrollTimer = setTimeout(() => {
-      moveHeaderUp();
-    }, 3000);
+    // Check that mouse isn't on nav
+    if (!isOnNav) {
+      console.log(isOnNav);
+      scrollTimer = setTimeout(() => {
+        moveHeaderUp();
+      }, 2500);
+    }
   };
 
   /**
@@ -133,13 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleNavOnWait();
   });
 
-  // invoke scrollToElement when anchor in nav is clicked and send to the corresponding section
+  // Invoke toggleNavOnWait based on mouse event on nav
+  nav.addEventListener('mouseenter', () => {
+    isOnNav = true; console.log(isOnNav);
+    toggleNavOnWait();
+  });
+  nav.addEventListener('mouseout', () => {
+    isOnNav = false;
+    toggleNavOnWait();
+  });
+
+  // Invoke scrollToElement when anchor in nav is clicked and send to the corresponding section
   nav.addEventListener('click', (e) => {
     const { target } = e;
-
     // We delegate the event to a tags only inside the nav
     if (target.tagName !== 'A') return;
-
     // Get the section that matches the anchor's custom attribute
     const section = document.querySelector(target.dataset.nav);
     scrollToElement(section);
