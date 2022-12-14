@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const navItemLink = document.createElement('a');
 
       // Navigation to anchors is done by scrollTo, so we use a custom attribute instead of href
-      navItemLink.dataset.nav = `#${section.getAttribute('id')}`;
+      navItemLink.dataset.nav = section.getAttribute('id');
       navItemLink.innerText = section.dataset.nav;
       navItemLink.classList.add('menu__link');
 
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (box.top <= 150 && box.bottom >= 150) {
         // Apply active state on the current section and the corresponding nav link.
         section.classList.add('your-active-class');
-        nav.querySelector(`[data-nav="#${section.id}"]`).classList.add('menu__link--active');
+        nav.querySelector(`[data-nav="${section.id}"]`).classList.add('menu__link--active');
       } else {
         // Remove active state from other sections and other nav links
         section.classList.remove('your-active-class');
-        nav.querySelector(`[data-nav="#${section.id}"]`).classList.remove('menu__link--active');
+        nav.querySelector(`[data-nav="${section.id}"]`).classList.remove('menu__link--active');
       }
     }
   };
@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Check that mouse isn't on nav
     if (!isOnNav) {
-      console.log(isOnNav);
       scrollTimer = setTimeout(() => {
         moveHeaderUp();
       }, 2500);
@@ -136,10 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Invoke toggleNavOnWait based on mouse event on nav
-  nav.addEventListener('mouseenter', () => {
-    isOnNav = true; console.log(isOnNav);
-    toggleNavOnWait();
-  });
+  nav.addEventListener('mouseenter', () => { toggleNavOnWait(); });
   nav.addEventListener('mouseout', () => {
     isOnNav = false;
     toggleNavOnWait();
@@ -151,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // We delegate the event to a tags only inside the nav
     if (target.tagName !== 'A') return;
     // Get the section that matches the anchor's custom attribute
-    const section = document.querySelector(target.dataset.nav);
+    const section = document.querySelector(`#${target.dataset.nav}`);
     scrollToElement(section);
   });
 
