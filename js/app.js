@@ -135,11 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Invoke toggleNavOnWait based on mouse event on nav
-  nav.addEventListener('mouseenter', () => { toggleNavOnWait(); });
-  nav.addEventListener('mouseout', () => {
-    isOnNav = false;
-    toggleNavOnWait();
-  });
+  nav.addEventListener('mouseenter', () => { isOnNav = true; toggleNavOnWait(); });
+  nav.addEventListener('mouseout', () => { isOnNav = false; toggleNavOnWait(); });
 
   // Invoke scrollToElement when anchor in nav is clicked and send to the corresponding section
   nav.addEventListener('click', (e) => {
