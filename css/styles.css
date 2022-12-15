@@ -88,10 +88,12 @@ section {
     cursor:pointer;
 }
 
-.navbar__menu .menu__link:hover {
+@media (hover: hover) {
+  .navbar__menu .menu__link:hover {
     background: rgba(0,13,60,1);
     color: #fff;
     transition: ease 0.3s all;
+  }
 }
 
 /* Header Styles */
