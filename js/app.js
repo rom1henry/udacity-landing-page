@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
  *
 */
   // Sunco Init
-  Smooch.init({ integrationId: '<integration-id>' }).then(
+  Smooch.init({ integrationId: '63cae66df56d2f0109c44af3' }).then(
     function() {
         // Your code after init is complete
     },
