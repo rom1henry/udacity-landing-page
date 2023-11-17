@@ -1,5 +1,5 @@
   // Sunco Init
-  Smooch.init({ integrationId: '63cae66df56d2f0109c44af3' }).then(
+  Smooch.init({ integrationId: '655752c4d99f34ed48c04bd7' }).then(
     function() {
         // Your code after init is complete
     },
