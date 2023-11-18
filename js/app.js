@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       tempNav.appendChild(navItem);
     }
+    const navLoginLink = document.createElement('a');
+    navLoginLink.dataset.nav = 'login';
+    navLoginLink.innerText = 'Login';
+    navLoginLink.classList.add('menu__link');
+    
+    const navLogin = document.createElement('li');
+    navLogin.appendChild(navLoginLink);
+
+    tempNav.appendChild(navLogin);
+    
     nav.appendChild(tempNav);
   };
 
