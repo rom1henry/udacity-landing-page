@@ -38,7 +38,7 @@ document.addEventListener(
 		const userData = {
 			external_id: 'm-scott',
 			name: 'Michael Scott',
-			email: 'michael-scott@example.com',
+			email: 'michael-scott@myexample.com',
 		};
 
 		/**
