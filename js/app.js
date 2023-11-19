@@ -198,7 +198,7 @@ document.addEventListener(
 		// Sunco login
 		const loginUser = async (userData) => {
 			const { token } = await getToken(userData);
-			Smooch.login('m-scott', token);
+			Smooch.login(userData.external_id, token);
 		};
 
 		const logoutUser = async () => {
