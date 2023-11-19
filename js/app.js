@@ -36,9 +36,9 @@ document.addEventListener(
 		let isOnNav = Boolean;
 
 		const userData = {
-			external_id: 'm-scott',
-			name: 'Michael Scott',
-			email: 'michael-scott@myexample.com',
+			external_id: 'm-bott',
+			name: 'Michael Bott',
+			email: 'michael-bott@myexample.com',
 		};
 
 		/**
