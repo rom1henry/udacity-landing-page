@@ -1,25 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-/**
- *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
- */
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
- */
-
-// only execute script in <head> when DOM is loaded
 document.addEventListener(
 	'DOMContentLoaded',
 	() => {
@@ -36,18 +16,20 @@ document.addEventListener(
 		let isOnNav = Boolean;
 
 		const userData = {
-			external_id: 'm-bott',
-			name: 'Michael Bott',
-			email: 'michael-bott@myexample.com',
+			// external_id: 'm-scott',
+			// name: 'Michael Scott',
+			// email: 'michael-scott@myexample.com',
+			external_id: 'm-plop',
+			name: 'Michael Plop',
+			email: 'michael-Plop@myexample.com',
 		};
 
 		/**
 		 * End Global Variables
 		 * Start Helper Functions
-		 *
 		 */
 
-		// Build the nav menu
+		// Build nav menu
 		const buildMenu = () => {
 			// Use documentFragment for performance during iteration
 			const tempNav = document.createDocumentFragment();
